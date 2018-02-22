@@ -1,0 +1,8 @@
+<form (submit)="submitEdit()">
+    <p *ngIf="error.errors.name" class="error">Name must be at least 3 characters</p>
+    <p *ngIf="error.errors.cuisine" class="error">Cuisine must be at least 3 characters</p>
+    <input type="text" name="restaurant.name" [(ngModel)]="restaurant.name">
+    <input type="text" name="restaurant.cuisine" [(ngModel)]="restaurant.cuisine">
+    <input type="submit">
+    <button type="button" (click)="cancel()">Cancel</button>
+</form>

@@ -1,0 +1,15 @@
+<p>
+  new works!
+</p>
+
+<form (submit)="submitRestaurant()">
+    <p *ngIf="error.errors.name" class="error">Name must be at least 3 characters</p>
+    <p *ngIf="error.errors.cuisine" class="error">Cuisine must be at least 3 characters</p>
+    <label for="">Name: </label>
+    <input type="text" name="newRestaurant.name" [(ngModel)]="newRestaurant.name">
+    <label for="">Cuisine: </label>
+    <input type="text" name="newRestaurant.cuisine" [(ngModel)]="newRestaurant.cuisine">
+
+    <button type="button" (click)="cancel()">Cancel</button>
+    <input type="submit" value="Add">
+</form>

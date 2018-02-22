@@ -1,0 +1,26 @@
+<p>
+  home works!
+</p>
+<button [routerLink]="['/new']">New Restaurant</button>
+
+<table>
+    <tr>
+        <th>Restaurant</th>
+        <th>Cuisine</th>
+        <th>Actions Available</th>
+    </tr>
+    <tr *ngFor="let restaurant of restaurants; let i = index" [attr.data.index]="i">
+        <td *ngIf="!editRestaurants[i]">{{restaurant.name}}</td>
+        <td *ngIf="!editRestaurants[i]">{{restaurant.cuisine}}</td>
+        
+        <td *ngIf="!editRestaurants[i]">
+            <button [routerLink]="['/reviews', restaurant._id]">Read Reviews</button>
+            <button (click)="editRestaurants[i] = editRestaurants[i] ? false : true">Update</button>
+            <button (click)="deleteRestaurant(restaurant._id)">Delete</button>
+        </td>
+        <td *ngIf="editRestaurants[i]">
+            <app-edit [restaurant]="restaurant" (submitted)="editRestaurants[i] = false" (cancelled)="editRestaurants[i] = false; cancelEdit($event, i)">
+            </app-edit>
+        </td>
+    </tr>
+</table>
